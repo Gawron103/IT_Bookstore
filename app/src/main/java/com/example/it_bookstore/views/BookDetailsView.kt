@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.example.it_bookstore.R
+import com.bumptech.glide.Glide
 import com.example.it_bookstore.databinding.FragmentBookDetailsViewBinding
 
 class BookDetailsView : Fragment() {
@@ -33,6 +33,9 @@ class BookDetailsView : Fragment() {
 
         val book = _args.book
 
+        Glide.with(binding.root)
+            .load(book.image)
+            .into(binding.ivBookCover)
         binding.tvISBN.text = book.isbn
         binding.tvPrice.text = book.price
         binding.tvSubtitle.text = book.subtitle
