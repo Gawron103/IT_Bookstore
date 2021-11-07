@@ -57,8 +57,12 @@ class BooksListFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        _booksViewModel.getBooksLiveData().observe(viewLifecycleOwner, Observer { books ->
+        _booksViewModel.getBooksLiveData().observe(viewLifecycleOwner, { books ->
             _booksAdapter.updateBooks(books)
+        })
+
+        _booksViewModel.getLoadingLiveData().observe(viewLifecycleOwner, { isLoading ->
+            binding.pbLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
     }
 
